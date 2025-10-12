@@ -5,8 +5,10 @@ import net.kaupenjoe.tutorialmod.TutorialMod;
 import net.kaupenjoe.tutorialmod.entity.custom.MantisEntity;
 import net.kaupenjoe.tutorialmod.entity.custom.MantisVariant;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.state.CameraRenderState;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -33,14 +35,14 @@ public class MantisRenderer extends MobEntityRenderer<MantisEntity, MantisRender
 
     @Override
     public void render(MantisRenderState state, MatrixStack matrixStack,
-                       VertexConsumerProvider vertexConsumerProvider, int i) {
+                       OrderedRenderCommandQueue orderedRenderCommandQueue, CameraRenderState cameraRenderState) {
         if(state.baby) {
             matrixStack.scale(0.5f, 0.5f, 0.5f);
         } else {
             matrixStack.scale(1f, 1f, 1f);
         }
 
-        super.render(state, matrixStack, vertexConsumerProvider, i);
+        super.render(state, matrixStack, orderedRenderCommandQueue, cameraRenderState);
     }
 
     @Override
